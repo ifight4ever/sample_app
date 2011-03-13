@@ -1,14 +1,13 @@
 require 'spec_helper'
 
 describe UsersController do
-
+render_views
   describe "GET 'new'" do
     it "should be successful" do
       get 'new'
       response.should be_success
     end
-  end
-
+ 
   describe "POST 'create'" do
 
     describe "failure" do
@@ -53,13 +52,7 @@ describe UsersController do
         post :create, :user => @attr
         response.should redirect_to(user_path(assigns(:user)))
       end    
-		it "should have a welcome message" do
-        post :create, :user => @attr
-        flash[:success].should =~ /welcome to the sample app/i
-      end
     end
   end
-
-
-
 end
+
